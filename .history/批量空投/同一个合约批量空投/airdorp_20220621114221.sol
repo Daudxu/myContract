@@ -15,7 +15,7 @@ contract Mytoken is ERC20, Ownable {
         _mint(to, amount);
     }
 
-    function Airdropper(address[] calldata  _to, uint256[] calldata _account)  public onlyOwner returns (bool) {
+    function Airdropper(address[] calldata  _to, uint256[] calldata _account)  public returns (bool) {
         require(_to.length > 0 && _to.length == _account.length);
         for(uint i = 0; i < _to.length; i++){
              transfer(_to[i], _account[i]);
