@@ -1,8 +1,8 @@
 # My Contracts
 
 ### 发行ERC20代币
-- [固定总量代币](./README/ERC20/ERC20FixedSupply.md)
-- [可销毁代币](./README/ERC20/ERC20WithBurnable.md)
-- [可增发代币](./README/ERC20/ERC20WithMintable.md)
-- [有封顶代币](./README/ERC20/ERC20WithCapped.md)
-- [可暂停代币](./README/ERC20/ERC20WithPausable.md)
+- [固定总量代币](./ERC20/固定总量代币/ERC20TOKEN.sol)
+- [可销毁代币](./ERC20/可销毁代币/ERC20TOKEN.sol)
+- [可增发代币](./ERC20/可暂停代币/ERC20TOKEN.sol)
+- [有封顶代币](./ERC20/有封顶代币/ERC20TOKEN.sol)
+- [可暂停代币](./ERC20/锁仓合约/ERC20TOKEN.sol)
