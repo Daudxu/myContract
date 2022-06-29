@@ -2,7 +2,7 @@
 var Wallet = require('ethereumjs-wallet')
 const fs = require('fs');
 
-for(var i = 0; i < 99; i++){
+for(var i = 0; i <= 50; i++){
     const EthWallet = Wallet.default.generate(false);
 
     const addressALL = EthWallet.getAddressString();
@@ -22,6 +22,5 @@ for(var i = 0; i < 99; i++){
         if (err) throw err;
         console.log('追加privateKey');
     });
-
 }
 
