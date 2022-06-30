@@ -8,6 +8,10 @@
 - [可暂停合约](./ERC20/可暂停合约/ERC20TOKEN.sol)
 - [锁仓合约](./ERC20/锁仓合约/ERC20TOKEN.sol)
 
+### ERC20 token
+- [全功能ERC721代币](./ERC721/全功能ERC721代币/erc721.sol)
+- [可销毁的ERC721代币](./ERC721/可销毁的ERC721代币/erc721.sol)
+
 ### 批量空投
 - [合约内](./批量空投/合约内/Airdropper.sol)
 - [合约外](./批量空投/合约外/Airdropper.sol)
