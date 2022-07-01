@@ -23,5 +23,5 @@
 ### 合约安全
 - [重入攻击](./合约安全/数学溢出攻击/README.md)
 - [数学溢出攻击](./合约安全/重入攻击/README.md)
-
+- [智能合约安全之不一致性检查](https://cloud.tencent.com/developer/article/1850769)
 ### GAS费优化
