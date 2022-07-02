@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-interface Iec20{
-     function allowance(address _owner, address _spender) external view returns (uint256 remaining);
+pragma solidity ^0.8.15;
+  
+interface ICalculator {
+   function allowance(address _owner, address _spender) public view returns (uint256 remaining);
 }
 
-contract Airdropper {
+contract test {
     bytes public data;
-
-    function  checkAllowance(address _addresss) external view returns(uint256 remaining) {
-        return  Iec20(_addresss).allowance(msg.sender, address(this));
+    uint public sa;
+    function  test(address _addresss, address _owner, address _spender) public view returns (uint256) {
+         sa = ICalculator(_addresss).allowance(_owner, _spender);
     }
 
     function batch(address tokenAddr, address[] calldata toAddr, uint256 [] calldata value) public returns (bool){
             
-            require(toAddr.length == value.length && toAddr.length >= 1 && Iec20(tokenAddr).allowance(msg.sender, address(this)) > 0);
+            require(toAddr.length == value.length && toAddr.length >= 1);
             
             for(uint256 i = 0 ; i < toAddr.length; i++){
         
@@ -27,3 +27,4 @@ contract Airdropper {
             return true;
     }
 }
+
