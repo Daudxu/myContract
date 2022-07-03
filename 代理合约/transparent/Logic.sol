@@ -5,9 +5,6 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 contract MyContractProxyTest is Initializable {
     /// @custom:oz-upgrades-unsafe-allow constructor
-    constructor() {
-        _disableInitializers();
-    }
 
     mapping(string => uint256) private mappingArr;
 
@@ -17,7 +14,6 @@ contract MyContractProxyTest is Initializable {
         mappingArr[_key] = _value;
         emit logs(_key,_value);
     }
-
 
     function getMappingArr(string memory _key)public view returns(uint256){
         return mappingArr[_key];
