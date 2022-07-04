@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "ethereumjs-wallet": "^1.0.2"
+  },
+  "scripts": {
+    "dev": "yarn && node ./index.js",
+    "start": "yarn && node ./index.js"
   }
 }
