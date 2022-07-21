@@ -37,6 +37,8 @@ contract BulkSender is Ownable {
      *  sigin up  VIP
      */
     function  registerVIP() external  {
+        uint256 balanceOf = TokenErc(tokenAddress).balanceOf(msg.sender);
+        require(balanceOf > VIPTokenFee, "Check the token balanceOf");
         uint256 allowance = TokenErc(tokenAddress).allowance(msg.sender, address(this));
         require(allowance > VIPTokenFee, "Check the token allowance");
         TokenErc(tokenAddress).transferFrom(msg.sender, cashierAddress, VIPTokenFee);
