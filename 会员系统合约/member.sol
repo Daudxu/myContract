@@ -19,7 +19,7 @@ interface TokenErc {
     // event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract BulkSender is Ownable {
+contract DigiTools is Ownable {
 
     using SafeMath for uint;
     // cashier Address
@@ -70,6 +70,7 @@ contract BulkSender is Ownable {
     function isVIP(address _addr) public view returns(bool) {
         return  vipList[_addr];
     }
+    
     /*
      * view VIP Time
      */
