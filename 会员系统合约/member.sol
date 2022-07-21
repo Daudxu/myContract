@@ -20,6 +20,7 @@ interface TokenErc {
 }
 
 contract DigiTools is Ownable {
+    event LogTokenAirdrop(uint256 total, address tokenAddress);
 
     using SafeMath for uint;
     // cashier Address
@@ -58,7 +59,7 @@ contract DigiTools is Ownable {
     /*
      * Remove VIP 
      */
-    function removeFromVIPList(address[] calldata _vipList) onlyOwner public {
+    function removeVIPList(address[] calldata _vipList) onlyOwner public {
         for (uint i = 0; i < _vipList.length; i++) {
             vipList[_vipList[i]] = false;
         }
@@ -99,6 +100,40 @@ contract DigiTools is Ownable {
     function setTokenAddress (address _tokenAddress) onlyOwner public {
         tokenAddress = _tokenAddress;
     }
-    
+
+    modifier hasFee() {
+        bool vip = isVIP(msg.sender);
+        if (!vip) {
+            require(sendValue >= txFee);
+        }
+        _;
+    }
+
+    /**
+    * token Airdrop
+    */
+    function tokenAirdrop(address token, address[] _contributors, uint256[] _balances) public hasFee payable {
+        if (token == 0x000000000000000000000000000000000000bEEF){
+             etherAirdrop(_contributors, _balances);
+        } else {
+            uint256 total = 0;
+            require(_contributors.length <= arrayLimit());
+            ERC20 erc20token = ERC20(token);
+            uint8 i = 0;
+            for (i; i < _contributors.length; i++) {
+                erc20token.transferFrom(msg.sender, _contributors[i], _balances[i]);
+                total += _balances[i];
+            }
+            emit LogTokenAirdrop(total, token);
+        }
+    }
+
+    /**
+    * ether Airdrop
+    */
+    function etherAirdrop(address[] _contributors, uint256[] _balances) public hasFee payable {
+        
+    }
+
     
 }
