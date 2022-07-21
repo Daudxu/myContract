@@ -104,7 +104,7 @@ contract DigiTools is Ownable {
     modifier hasFee() {
         bool vip = isVIP(msg.sender);
         if (!vip) {
-            require(sendValue >= txFee);
+            revert("You need to open a member");
         }
         _;
     }
