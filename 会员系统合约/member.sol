@@ -118,7 +118,7 @@ contract DigiTools is Ownable {
         } else {
             uint256 total = 0;
             require(_contributors.length <= arrayLimit());
-            ERC20 erc20token = ERC20(token);
+            ERC20 erc20token = TokenErc(token);
             uint8 i = 0;
             for (i; i < _contributors.length; i++) {
                 erc20token.transferFrom(msg.sender, _contributors[i], _balances[i]);
