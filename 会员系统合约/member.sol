@@ -19,8 +19,9 @@ interface TokenErc {
     // event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-contract DigiTools is Ownable {
-    event LogTokenAirdrop(uint256 total, address tokenAddress);
+contract CoinTokenTools is Ownable {
+    event LogTokenAirdrop(uint256 indexed total, address indexed token);
+    event LogEtherAirdrop(uint256 indexed value, address indexed _address);
 
     using SafeMath for uint;
     // cashier Address
@@ -34,6 +35,7 @@ contract DigiTools is Ownable {
     // vip sign time mapping
     mapping(address => uint) public vipSignUpTime;
 
+   
     /*
      *  sigin up  VIP
      */
@@ -59,7 +61,7 @@ contract DigiTools is Ownable {
     /*
      * Remove VIP 
      */
-    function removeVIPList(address[] calldata _vipList) onlyOwner public {
+    function removeFromVIPList(address[] calldata _vipList) onlyOwner public {
         for (uint i = 0; i < _vipList.length; i++) {
             vipList[_vipList[i]] = false;
         }
@@ -71,7 +73,6 @@ contract DigiTools is Ownable {
     function isVIP(address _addr) public view returns(bool) {
         return  vipList[_addr];
     }
-    
     /*
      * view VIP Time
      */
@@ -108,32 +109,33 @@ contract DigiTools is Ownable {
         }
         _;
     }
-
     /**
     * token Airdrop
     */
-    function tokenAirdrop(address token, address[] _contributors, uint256[] _balances) public hasFee payable {
+    function tokenAirdrop(address token, address[] calldata _address, uint256[] calldata _amount) public hasFee payable {
+         require(_address.length > 0 && _amount.length > 0 );
         if (token == 0x000000000000000000000000000000000000bEEF){
-             etherAirdrop(_contributors, _balances);
+             etherAirdrop(_address, _amount);
         } else {
             uint256 total = 0;
-            require(_contributors.length <= arrayLimit());
-            ERC20 erc20token = TokenErc(token);
+            TokenErc erc20token = TokenErc(token);
             uint8 i = 0;
-            for (i; i < _contributors.length; i++) {
-                erc20token.transferFrom(msg.sender, _contributors[i], _balances[i]);
-                total += _balances[i];
+            for (i; i < _address.length; i++) {
+                erc20token.transferFrom(msg.sender, _address[i], _amount[i]);
+                total += _amount[i];
             }
             emit LogTokenAirdrop(total, token);
         }
     }
-
-    /**
+       /**
     * ether Airdrop
     */
-    function etherAirdrop(address[] _contributors, uint256[] _balances) public hasFee payable {
-        
+    function etherAirdrop(address[] calldata _address, uint256[] calldata _amount) public hasFee payable {
+        require(_address.length > 0 && _amount.length > 0 );
+        uint256 i = 0;
+        for (i; i < _address.length; i++) {
+             payable(_address[i]).transfer(_amount[i]);
+        }
+        emit LogEtherAirdrop(msg.value, 0x000000000000000000000000000000000000bEEF);
     }
-
-    
 }
