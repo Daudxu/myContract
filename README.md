@@ -31,7 +31,6 @@
 - https://github.com/kadenzipfel/smart-contract-attack-vectors
 - https://github.com/ConsenSys/smart-contract-best-practices
 - https://github.com/iskdrews/awesome-solidity-gas-optimization
-
 ### Reproductions
 - https://github.com/SunWeb3Sec/DeFiHackLabs
 
