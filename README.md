@@ -39,6 +39,8 @@
 - [GAS费优化2](https://github.com/ZeroEkkusu/re-golf-course)
 
 ### 会员合约
+### NFT白名单
+- [GAS费优化1](https://medium.com/@quentangle/nft%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%99%BD%E5%90%8D%E5%8D%95%E6%9C%BA%E5%88%B6-c2cb41a94abd)
 ### 合约升级
 - [合约生升级](./合约生升级/README.md)
 
