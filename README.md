@@ -46,5 +46,6 @@
 - [合约生升级](./合约生升级/README.md)
 ### 动态NFT和静态NFT
 ### chainlink预言机
-
+- [chainlink 概述](https://chainlink-chinese.readme.io/docs/%E5%90%88%E7%BA%A6%E5%88%9B%E5%BB%BA%E6%A6%82%E8%BF%B0)
+- [chainlink deno](https://chainlink-chinese.readme.io/docs/%E4%BD%BF%E7%94%A8%E5%90%88%E7%BA%A6)
 Thanks：[Shun Kakinoki](https://github.com/shunkakinoki)
